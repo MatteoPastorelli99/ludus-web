@@ -191,7 +191,6 @@ if (window.Cache) {
 // Uso senza rete (vedi sw.js). Una versione nuova si applica da sola al prossimo avvio.
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     const gia = !!navigator.serviceWorker.controller;
-    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
     navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (!gia) return;
         const avviso = ludusAvviso('avviso-versione', "C'è una versione nuova di Ludus.", { testo: 'Aggiorna', fai: () => location.reload() });
